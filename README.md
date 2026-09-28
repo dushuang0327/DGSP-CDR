@@ -73,7 +73,7 @@ set DGSP_DATA_DIR=D:\path\to\data
 Windows PowerShell:
 $env:DGSP_DATA_DIR="D:\path\to\data"
 
-f DGSP_DATA_DIR is not specified, the code uses the data/ directory under the project root.
+if DGSP_DATA_DIR is not specified, the code uses the data/ directory under the project root.
 
 ---
 

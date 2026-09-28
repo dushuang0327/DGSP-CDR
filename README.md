@@ -51,6 +51,12 @@ Because labeled patient drug-response data are limited, DGSP-CDR further introdu
 
 ---
 
+## Hardware
+
+The reference experiments were conducted on an NVIDIA GeForce RTX 3090 GPU. GPU acceleration is recommended for reproducing the full experiments.
+
+---
+
 ## Create the Environment
 
 Create the Conda environment using:

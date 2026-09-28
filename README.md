@@ -59,8 +59,7 @@ DGSP-CDR is designed to predict cancer drug responses using both in vitro and in
 3. Download benchmark dataset (CODE-AE v2.0) from:  
    [https://doi.org/10.5281/zenodo.4776448](https://doi.org/10.5281/zenodo.4776448)
 
-4. Modify `config/data_config.py` to set your local dataset directory.
+4. set DGSP_DATA_DIR=D:\your\data.
 
 5. Run the main script:
-   ```bash
    python main.py

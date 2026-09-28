@@ -79,7 +79,7 @@ if DGSP_DATA_DIR is not specified, the code uses the data/ directory under the p
 
 ## Run
 Run the main experiment with:
-python main.py --seed 2020
+python main.py --seed 1795
 
 If --data-dir is supported:
-python main.py --data-dir /path/to/data --seed 2020
+python main.py --data-dir /path/to/data --seed 1795

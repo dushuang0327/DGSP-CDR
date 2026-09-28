@@ -294,7 +294,7 @@ if __name__ == '__main__':
     parser.add_argument('--measurement', dest='measurement', nargs='?', default='AUC', choices=['AUC', 'LN_IC50'])
     parser.add_argument('--a_thres', dest='a_thres', nargs='?', type=float, default=None)
     parser.add_argument('--d_thres', dest='days_thres', nargs='?', type=float, default=None)
-    parser.add_argument("--seed",type=int,default=2020)
+    parser.add_argument("--seed",type=int,default=1795)
     parser.add_argument('--n', dest='n', nargs='?', type=int, default=5)
     parser.add_argument('--drug_dim', dest='drug_dim', nargs='?', type=int, default=7)
     train_group = parser.add_mutually_exclusive_group(required=False)

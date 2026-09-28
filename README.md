@@ -88,7 +88,6 @@ python main.py --data-dir /path/to/data --seed 1795
 
 The main five-drug experiments can be reproduced using:
 
-```bash
 python scripts/reproduce_main.py
 
 ---

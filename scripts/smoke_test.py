@@ -3,6 +3,7 @@ import sys
 import random
 
 import numpy as np
+import pandas as pd
 import torch
 import torch.nn as nn
 
@@ -32,11 +33,13 @@ from src.cut_stats_subset import select_data
 
 SEED = 1795
 
-NUM_SAMPLES = 32
-INPUT_DIM = 32
 LATENT_DIM = 8
 NUM_BASIS = 5
 NUM_ENSEMBLE = 5
+
+SMOKE_DATA_DIR = PROJECT_ROOT / "examples" / "smoke_data"
+FEATURE_FILE = SMOKE_DATA_DIR / "gene_features.csv"
+LABEL_FILE = SMOKE_DATA_DIR / "labels.csv"
 
 
 # ============================================================
@@ -59,6 +62,83 @@ def check_finite(name: str, tensor: torch.Tensor):
         )
 
 
+def load_smoke_data(device):
+    """
+    Load the lightweight smoke-test dataset from:
+
+        examples/smoke_data/gene_features.csv
+        examples/smoke_data/labels.csv
+    """
+
+    if not FEATURE_FILE.exists():
+        raise FileNotFoundError(
+            f"Cannot find smoke-test feature file: {FEATURE_FILE}"
+        )
+
+    if not LABEL_FILE.exists():
+        raise FileNotFoundError(
+            f"Cannot find smoke-test label file: {LABEL_FILE}"
+        )
+
+    feature_df = pd.read_csv(
+        FEATURE_FILE,
+        index_col=0
+    )
+
+    label_df = pd.read_csv(
+        LABEL_FILE
+    )
+
+    if "sample" not in label_df.columns:
+        raise ValueError(
+            "labels.csv must contain a 'sample' column."
+        )
+
+    if "label" not in label_df.columns:
+        raise ValueError(
+            "labels.csv must contain a 'label' column."
+        )
+
+    feature_samples = feature_df.index.astype(str).tolist()
+    label_samples = label_df["sample"].astype(str).tolist()
+
+    if feature_samples != label_samples:
+        raise ValueError(
+            "Sample order in gene_features.csv and labels.csv does not match."
+        )
+
+    if feature_df.isnull().any().any():
+        raise ValueError(
+            "gene_features.csv contains missing values."
+        )
+
+    if label_df["label"].isnull().any():
+        raise ValueError(
+            "labels.csv contains missing labels."
+        )
+
+    labels = label_df["label"].astype(int).values
+
+    if not np.isin(labels, [0, 1]).all():
+        raise ValueError(
+            "Smoke-test labels must be binary values 0 or 1."
+        )
+
+    x = torch.tensor(
+        feature_df.values,
+        dtype=torch.float32,
+        device=device
+    )
+
+    y = torch.tensor(
+        labels,
+        dtype=torch.float32,
+        device=device
+    ).unsqueeze(1)
+
+    return x, y, feature_df
+
+
 # ============================================================
 # Test 1: representation + basis projection + classifier
 # ============================================================
@@ -67,7 +147,7 @@ def test_representation_and_classifier():
     """
     Verify the basic DGSP-CDR execution path:
 
-        synthetic gene-expression features
+        smoke-test gene-expression features
         -> MLP encoder
         -> basis projection
         -> classifier
@@ -85,36 +165,39 @@ def test_representation_and_classifier():
     )
 
     # --------------------------------------------------------
-    # Synthetic gene-expression features
+    # Load smoke-test dataset
     # --------------------------------------------------------
 
-    x = torch.randn(
-        NUM_SAMPLES,
-        INPUT_DIM,
-        dtype=torch.float32,
-        device=device
+    x, y, feature_df = load_smoke_data(
+        device
     )
 
-    # Balanced binary labels
-    y = torch.tensor(
-        [0, 1] * (NUM_SAMPLES // 2),
-        dtype=torch.float32,
-        device=device
-    ).unsqueeze(1)
+    num_samples = x.shape[0]
+    input_dim = x.shape[1]
+
+    if num_samples < 2:
+        raise RuntimeError(
+            "Smoke-test dataset must contain at least 2 samples."
+        )
+
+    if input_dim < 1:
+        raise RuntimeError(
+            "Smoke-test dataset contains no features."
+        )
 
     # --------------------------------------------------------
     # Encoder
     # --------------------------------------------------------
 
     encoder = MLP(
-        input_dim=INPUT_DIM,
+        input_dim=input_dim,
         output_dim=LATENT_DIM,
         hidden_dims=[16],
         dop=0.1
     ).to(device)
 
     # --------------------------------------------------------
-    # Synthetic basis/drug representations
+    # Lightweight basis representations
     # --------------------------------------------------------
 
     basis_vec = torch.randn(
@@ -149,15 +232,17 @@ def test_representation_and_classifier():
     # Forward pass
     # --------------------------------------------------------
 
-    logits, fused_features = classifier(x)
+    logits, fused_features = classifier(
+        x
+    )
 
     expected_logit_shape = (
-        NUM_SAMPLES,
+        num_samples,
         1
     )
 
     expected_feature_shape = (
-        NUM_SAMPLES,
+        num_samples,
         LATENT_DIM
     )
 
@@ -214,11 +299,18 @@ def test_representation_and_classifier():
 
     print(
         f"      PASS "
-        f"(loss={loss.item():.6f}, "
+        f"(samples={num_samples}, "
+        f"features={input_dim}, "
+        f"loss={loss.item():.6f}, "
         f"device={device})"
     )
 
-    return fused_features.detach().cpu().numpy()
+    return (
+        fused_features
+        .detach()
+        .cpu()
+        .numpy()
+    )
 
 
 # ============================================================
@@ -240,26 +332,33 @@ def test_pseudo_label_selection(features: np.ndarray):
 
     num_samples = features.shape[0]
 
+    if num_samples <= 10:
+        raise RuntimeError(
+            "Smoke-test dataset must contain more than 10 samples "
+            "for pseudo-label selection."
+        )
+
     ensemble_outputs = []
 
     # --------------------------------------------------------
-    # Construct synthetic outputs from five classifiers
+    # Construct lightweight outputs from five classifiers
     # --------------------------------------------------------
 
-    for classifier_id in range(NUM_ENSEMBLE):
+    for classifier_id in range(
+        NUM_ENSEMBLE
+    ):
 
         prediction_dict = {}
 
-        for index in range(num_samples):
+        for index in range(
+            num_samples
+        ):
 
-            # First half: confident negative predictions
             if index < num_samples // 2:
                 probability = (
                     0.20
                     + classifier_id * 0.005
                 )
-
-            # Second half: confident positive predictions
             else:
                 probability = (
                     0.80
@@ -276,7 +375,7 @@ def test_pseudo_label_selection(features: np.ndarray):
         )
 
     # --------------------------------------------------------
-    # Run actual DGSP-CDR pseudo-label selection
+    # Run DGSP-CDR pseudo-label selection
     # --------------------------------------------------------
 
     selected_indices, selected_labels = select_data(
@@ -302,7 +401,10 @@ def test_pseudo_label_selection(features: np.ndarray):
             "pseudo-labels do not match."
         )
 
-    if isinstance(selected_labels, torch.Tensor):
+    if isinstance(
+        selected_labels,
+        torch.Tensor
+    ):
         labels = (
             selected_labels
             .detach()
@@ -365,6 +467,11 @@ def test_environment():
     )
 
     print(
+        f"      pandas: "
+        f"{pd.__version__}"
+    )
+
+    print(
         f"      CUDA available: "
         f"{torch.cuda.is_available()}"
     )
@@ -383,13 +490,17 @@ def test_environment():
 # ============================================================
 
 def main():
+
     print("=" * 70)
     print("DGSP-CDR Lightweight Smoke Test")
     print("=" * 70)
 
     print(
-        "This test uses synthetic data and verifies "
-        "basic execution of the core pipeline."
+        f"Smoke-test data: {SMOKE_DATA_DIR}"
+    )
+
+    print(
+        "This test verifies basic execution of the core pipeline."
     )
 
     print(

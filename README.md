@@ -108,4 +108,14 @@ AUROC and AUPRC are reported as the mean ± sample standard deviation across the
 mean = np.mean(values)
 std = np.std(values, ddof=1)
 ```
+
+## Reproducing the Main Experiments
+
+The main five-drug experiments can be reproduced using:
+
+```bash
+python scripts/reproduce_main.py
+```
+
+The script runs the five-fold DGSP-CDR experiments using the settings defined in `config/param_config.py` and `config/train_params.json`.
 ```

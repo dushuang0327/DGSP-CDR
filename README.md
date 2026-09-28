@@ -83,3 +83,10 @@ python main.py --seed 1795
 
 If --data-dir is supported:
 python main.py --data-dir /path/to/data --seed 1795
+
+## Reproducing the Main Experiments
+
+The main five-drug experiments can be reproduced using:
+
+```bash
+python scripts/reproduce_main.py

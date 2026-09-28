@@ -61,13 +61,18 @@ pip install -r requirements.txt
 
 ## Dataset
 The experiments use the CODE-AE v2.0 dataset:
+
 https://doi.org/10.5281/zenodo.4776448
+
 Linux/macOS:
 export DGSP_DATA_DIR=/path/to/data
+
 Windows CMD:
 set DGSP_DATA_DIR=D:\path\to\data
+
 Windows PowerShell:
 $env:DGSP_DATA_DIR="D:\path\to\data"
+
 f DGSP_DATA_DIR is not specified, the code uses the data/ directory under the project root.
 
 ---
@@ -75,5 +80,6 @@ f DGSP_DATA_DIR is not specified, the code uses the data/ directory under the pr
 ## Run
 Run the main experiment with:
 python main.py --seed 2020
+
 If --data-dir is supported:
 python main.py --data-dir /path/to/data --seed 2020

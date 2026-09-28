@@ -2,25 +2,25 @@
 
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python3-1f425f.svg?color=purple)](https://www.python.org/)
 
-## DGSP-CDR: A Drug–Gene Synergistic encoding and Selective Pseudo-labeling framework for Cancer Drug Response prediction
+## DGSP-CDR: A Drug–Gene Synergistic Encoding and Selective Pseudo-Labeling Framework for Cancer Drug Response Prediction
 
-> Official PyTorch implementation (partially released) of **DGSP-CDR**, a cross-domain drug response prediction framework that integrates drug–gene synergistic encoding with dynamic pseudo-labeling.
+> Official PyTorch implementation of **DGSP-CDR**, a cross-domain cancer drug response prediction framework that integrates drug–gene synergistic representation learning with selective iterative pseudo-labeling.
 
 ---
 
 ## Highlights
 
 - **Structural-Enhanced Drug Encoding Module**  
-  Enhances drug ECFP fingerprints via Single-Fingerprint Multi-Path Encoding and subspace attention.
+  Enhances drug ECFP representations using a Single-Fingerprint Multi-Path Encoder and subspace attention.
 
 - **Dual-Branch Variational Encoding Module**  
-  Extracts both domain-invariant and domain-specific gene features for robust cross-domain generalization.
+  Extracts shared domain-invariant and private domain-specific gene expression representations for cross-domain transfer.
 
 - **Cross-Modal Attention Fusion Module**  
-  Integrates structural and transcriptomic representations through attention-based interaction.
+  Integrates drug structural representations and gene expression representations through attention-based interaction.
 
 - **Selective Pseudo-Label Enhancement Module**  
-  Employs a dynamic iterative pseudo-labeling strategy with neighborhood consistency filtering.
+  Generates provisional response labels for unlabeled TCGA patients using an ensemble of classifiers trained on labeled cell-line data, and progressively selects reliable pseudo-labeled samples through confidence filtering, ensemble voting, neighborhood consistency, and iterative retraining.
 
 ---
 
@@ -28,8 +28,8 @@
 
 This codebase is partially adapted from:
 
-1. https://github.com/XieResearchGroup/CODE-AE  
-2. https://github.com/hunterlang/weaksup-subset-selection  
+1. [CODE-AE](https://github.com/XieResearchGroup/CODE-AE)
+2. [Weakly Supervised Subset Selection](https://github.com/hunterlang/weaksup-subset-selection)
 
 We thank the original authors for their open-source contributions.
 
@@ -43,23 +43,37 @@ We thank the original authors for their open-source contributions.
 
 ## Overview
 
-DGSP-CDR is designed to predict cancer drug responses using both in vitro and in vivo data. The model learns drug–gene interactions by fusing fingerprint-based drug embeddings and gene expression representations. To address the lack of labeled patient data, we introduce a **dynamic iterative pseudo-labeling strategy**, progressively incorporating confident samples to enhance learning.
+DGSP-CDR is designed for cross-domain cancer drug response prediction from cancer cell lines to patients.
+
+The framework jointly models drug molecular structure and gene expression information. Drug structures are represented using ECFP fingerprints and enhanced through multi-path structural encoding and subspace attention. Gene expression profiles from cell lines and patients are encoded using a dual-branch variational representation module containing shared and private encoders. The resulting drug and gene representations are integrated through cross-modal attention.
+
+Because labeled patient drug-response data are limited, DGSP-CDR further introduces a selective pseudo-labeling procedure. In this framework, pseudo-labels are provisional drug-response labels assigned to originally unlabeled TCGA patient samples using an ensemble of classifiers trained on labeled cell-line data. Candidate pseudo-labeled patients are progressively filtered according to prediction confidence, ensemble agreement, and neighborhood consistency in the learned representation space. Selected patient samples are subsequently incorporated into the augmented training set for iterative model refinement.
 
 ---
 
-## Installation
+## Create the environment
+conda env create -f environment.yml
+conda activate dgsp-cdr
+or install dependencies with:
+pip install -r requirements.txt
 
-1. Install Anaconda:  
-   [https://www.anaconda.com/download](https://www.anaconda.com/download)
+---
 
-2. Create environment and install dependencies:
-   ```bash
-   pip install -r requirements.txt
+## Dataset
+The experiments use the CODE-AE v2.0 dataset:
+https://doi.org/10.5281/zenodo.4776448
+Linux/macOS:
+export DGSP_DATA_DIR=/path/to/data
+Windows CMD:
+set DGSP_DATA_DIR=D:\path\to\data
+Windows PowerShell:
+$env:DGSP_DATA_DIR="D:\path\to\data"
+f DGSP_DATA_DIR is not specified, the code uses the data/ directory under the project root.
 
-3. Download benchmark dataset (CODE-AE v2.0) from:  
-   [https://doi.org/10.5281/zenodo.4776448](https://doi.org/10.5281/zenodo.4776448)
+---
 
-4. set DGSP_DATA_DIR=D:\your\data.
-
-5. Run the main script:
-   python main.py --data-dir ./data --seed 2020
+## Run
+Run the main experiment with:
+python main.py --seed 2020
+If --data-dir is supported:
+python main.py --data-dir /path/to/data --seed 2020

@@ -320,13 +320,13 @@ if __name__ == '__main__':
 
     # params_grid = {
     #     "pretrain_num_epochs": [300,500,700],
-    #     "train_num_epochs": [1500,2000,2500],
+    #     "train_num_epochs": [1500,200,2500],
     #     "dop": [0.1,0.0],
     #     "inv_temp": [0.1,1,2.5,10]
     # }
     params_grid = {
         "pretrain_num_epochs": [500],
-        "train_num_epochs": [2000],
+        "train_num_epochs": [200],
         "dop": [0.1],
         "inv_temp": [0.1]
     }

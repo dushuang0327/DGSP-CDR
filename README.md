@@ -51,44 +51,41 @@ Because labeled patient drug-response data are limited, DGSP-CDR further introdu
 
 ---
 
-## Create the environment
+## Create the Environment
+
+Create the Conda environment using:
+
+```bash
 conda env create -f environment.yml
 conda activate dgsp-cdr
-or install dependencies with:
-pip install -r requirements.txt
-
----
 
 ## Dataset
+
 The experiments use the CODE-AE v2.0 dataset:
 
 https://doi.org/10.5281/zenodo.4776448
 
+The dataset directory can be specified using the `DGSP_DATA_DIR` environment variable.
+
 Linux/macOS:
+
+```bash
 export DGSP_DATA_DIR=/path/to/data
+```
 
 Windows CMD:
+
+```cmd
 set DGSP_DATA_DIR=D:\path\to\data
+```
 
 Windows PowerShell:
+
+```powershell
 $env:DGSP_DATA_DIR="D:\path\to\data"
+```
 
-if DGSP_DATA_DIR is not specified, the code uses the data/ directory under the project root.
-
----
-
-## Run
-Run the main experiment with:
-python main.py --data-dir /path/to/data --seed 1795
-
-If --data-dir is supported:
-python main.py --data-dir /path/to/data --seed 1795
-
-## Reproducing the Main Experiments
-
-The main five-drug experiments can be reproduced using:
-
-python scripts/reproduce_main.py
+If `DGSP_DATA_DIR` is not specified, the code uses the `data/` directory under the project root.
 
 ---
 
@@ -97,3 +94,8 @@ python scripts/reproduce_main.py
 Reference five-fold results for all five drugs are provided in `logs/explain_2/code_adv_norm/`.
 
 AUROC and AUPRC are reported as the mean ± sample standard deviation across the five folds:
+
+```python
+mean = np.mean(values)
+std = np.std(values, ddof=1)
+```

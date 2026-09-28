@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="87694851-6583-49dc-8032-5ef0133c9f82" name="变更" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/main.py" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2prqvoZ54qwnX8rnb2JVSAhZdem" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.main (1).executor": "Run",
+    "Python.main (2).executor": "Run",
+    "Python.main (3).executor": "Run",
+    "Python.main.executor": "Run",
+    "Python.temp1.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "WebServerToolWindowPanel.toolwindow.highlight.mappings": "true",
+    "WebServerToolWindowPanel.toolwindow.highlight.symlinks": "true",
+    "WebServerToolWindowPanel.toolwindow.show.date": "false",
+    "WebServerToolWindowPanel.toolwindow.show.permissions": "false",
+    "WebServerToolWindowPanel.toolwindow.show.size": "false",
+    "last_opened_file_path": "C:/Users/DELL/Desktop/Hi-GeoMVP-main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.general",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="PyConsoleOptionsProvider">
+    <option name="myPythonConsoleState">
+      <console-settings module-name="WISER-master" is-module-sdk="true">
+        <option name="myUseModuleSdk" value="true" />
+        <option name="myModuleName" value="WISER-master" />
+      </console-settings>
+    </option>
+    <option name="myUseExistingConsole" value="true" />
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="PythonConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="WISER-master" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\DELL\AppData\Local\Programs\Python\Python37\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-PY-243.22562.220" />
+        <option value="bundled-python-sdk-0fc6c617c4bd-9a18a617cbe4-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-243.22562.220" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+  <component name="SshConsoleOptionsProvider">
+    <option name="myEncoding" value="UTF-8" />
+    <option name="myConnectionType" value="NONE" />
+    <option name="myConnectionId" value="" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="87694851-6583-49dc-8032-5ef0133c9f82" name="变更" comment="" />
+      <created>1733534776177</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1733534776177</updated>
+      <workItem from="1733619529203" duration="11000" />
+      <workItem from="1733619545986" duration="949000" />
+      <workItem from="1733620530633" duration="222000" />
+      <workItem from="1733620762982" duration="1900000" />
+      <workItem from="1733623058738" duration="13000" />
+      <workItem from="1733623081156" duration="1211000" />
+      <workItem from="1733624360452" duration="15000" />
+      <workItem from="1733624402756" duration="14000" />
+      <workItem from="1733626119630" duration="12128000" />
+      <workItem from="1733648683013" duration="203000" />
+      <workItem from="1733725901796" duration="12718000" />
+      <workItem from="1733836364909" duration="3251000" />
+      <workItem from="1734001749607" duration="1201000" />
+      <workItem from="1734009369230" duration="4410000" />
+      <workItem from="1734083286579" duration="303000" />
+      <workItem from="1734089705783" duration="6220000" />
+      <workItem from="1734185255521" duration="2327000" />
+      <workItem from="1734218979053" duration="9663000" />
+      <workItem from="1734328819620" duration="6710000" />
+      <workItem from="1734336540297" duration="11202000" />
+      <workItem from="1734356560909" duration="556000" />
+      <workItem from="1734391642852" duration="3840000" />
+      <workItem from="1734395984741" duration="4087000" />
+      <workItem from="1734523800569" duration="2729000" />
+      <workItem from="1735265940591" duration="1966000" />
+      <workItem from="1735306471929" duration="4524000" />
+      <workItem from="1735385650244" duration="6977000" />
+      <workItem from="1735429515646" duration="9715000" />
+      <workItem from="1735451397485" duration="3925000" />
+      <workItem from="1735954559528" duration="21000" />
+      <workItem from="1735955233285" duration="208000" />
+      <workItem from="1736129003141" duration="8938000" />
+      <workItem from="1736147237632" duration="5936000" />
+      <workItem from="1736832085232" duration="13312000" />
+      <workItem from="1737522788982" duration="12784000" />
+      <workItem from="1738897395545" duration="5931000" />
+      <workItem from="1739188171935" duration="210000" />
+      <workItem from="1740273020323" duration="554000" />
+      <workItem from="1740280842978" duration="256000" />
+      <workItem from="1740281142792" duration="88000" />
+      <workItem from="1740281303232" duration="1622000" />
+      <workItem from="1741747410883" duration="1469000" />
+      <workItem from="1741749851007" duration="34000" />
+      <workItem from="1741761380867" duration="7604000" />
+      <workItem from="1741779290597" duration="2000" />
+      <workItem from="1741829409683" duration="2948000" />
+      <workItem from="1741850734333" duration="3112000" />
+      <workItem from="1741918037662" duration="3796000" />
+      <workItem from="1742172947961" duration="2140000" />
+      <workItem from="1742175776183" duration="14000" />
+      <workItem from="1742175847198" duration="18677000" />
+      <workItem from="1742258947794" duration="6388000" />
+      <workItem from="1742265864412" duration="10000" />
+      <workItem from="1742278954946" duration="1528000" />
+      <workItem from="1742280515044" duration="3000" />
+      <workItem from="1742280688060" duration="96000" />
+      <workItem from="1742280941640" duration="1739000" />
+      <workItem from="1742783031489" duration="99000" />
+      <workItem from="1742783143717" duration="2981000" />
+      <workItem from="1742797229616" duration="15000" />
+      <workItem from="1746582178893" duration="12000" />
+      <workItem from="1746582311870" duration="88000" />
+      <workItem from="1748261583231" duration="165000" />
+      <workItem from="1748305819867" duration="24000" />
+      <workItem from="1748593659440" duration="17000" />
+      <workItem from="1748593796249" duration="23000" />
+      <workItem from="1748735761676" duration="50000" />
+      <workItem from="1748769193248" duration="2000" />
+      <workItem from="1748771125834" duration="1233000" />
+      <workItem from="1748782904681" duration="1166000" />
+      <workItem from="1748786375976" duration="601000" />
+      <workItem from="1749084877302" duration="309000" />
+      <workItem from="1749288617880" duration="610000" />
+      <workItem from="1749298774612" duration="336000" />
+      <workItem from="1749641616078" duration="38000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

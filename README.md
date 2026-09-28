@@ -62,4 +62,4 @@ DGSP-CDR is designed to predict cancer drug responses using both in vitro and in
 4. set DGSP_DATA_DIR=D:\your\data.
 
 5. Run the main script:
-   python main.py
+   python main.py --data-dir ./data --seed 2020

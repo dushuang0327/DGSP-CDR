@@ -37,7 +37,7 @@ LATENT_DIM = 8
 NUM_BASIS = 5
 NUM_ENSEMBLE = 5
 
-SMOKE_DATA_DIR = PROJECT_ROOT / "examples" / "smoke_data"
+SMOKE_DATA_DIR = PROJECT_ROOT / "scripts" / "smoke_data"
 FEATURE_FILE = SMOKE_DATA_DIR / "gene_features.csv"
 LABEL_FILE = SMOKE_DATA_DIR / "labels.csv"
 

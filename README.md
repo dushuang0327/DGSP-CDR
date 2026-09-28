@@ -79,7 +79,7 @@ if DGSP_DATA_DIR is not specified, the code uses the data/ directory under the p
 
 ## Run
 Run the main experiment with:
-python main.py --seed 1795
+python main.py --data-dir /path/to/data --seed 1795
 
 If --data-dir is supported:
 python main.py --data-dir /path/to/data --seed 1795
@@ -90,3 +90,11 @@ The main five-drug experiments can be reproduced using:
 
 ```bash
 python scripts/reproduce_main.py
+
+---
+
+## Reference Results
+
+Reference five-fold results for all five drugs are provided in `logs/explain_2/code_adv_norm/`.
+
+AUROC and AUPRC are reported as the mean ± sample standard deviation across the five folds:

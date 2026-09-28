@@ -58,6 +58,15 @@ Create the Conda environment using:
 ```bash
 conda env create -f environment.yml
 conda activate dgsp-cdr
+```
+
+Alternatively, install the required dependencies using:
+
+```bash
+pip install -r requirements.txt
+```
+
+---
 
 ## Dataset
 
@@ -98,4 +107,5 @@ AUROC and AUPRC are reported as the mean ± sample standard deviation across the
 ```python
 mean = np.mean(values)
 std = np.std(values, ddof=1)
+```
 ```

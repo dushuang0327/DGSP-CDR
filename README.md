@@ -125,3 +125,15 @@ python scripts/reproduce_main.py
 
 The script runs the five-fold DGSP-CDR experiments using the settings defined in `config/param_config.py` and `config/train_params.json`.
 ```
+
+---
+
+## Smoke Test
+
+A lightweight smoke test using synthetic data is provided to verify the core DGSP-CDR pipeline:
+
+```bash
+python scripts/smoke_test.py
+```
+
+The smoke test verifies model execution and pseudo-label selection only and does not reproduce the full experimental results.

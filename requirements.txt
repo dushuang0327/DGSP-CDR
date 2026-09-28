@@ -6,3 +6,4 @@ pandas==1.5.3
 scipy==1.10.1
 rdkit==2022.9.5
 tqdm==4.65.0
+torch-geometric==2.2.0

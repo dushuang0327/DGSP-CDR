@@ -1,11 +1,11 @@
 import os
 
-sig_gene_json = "./data/sigGeneWithAliasInUq1000Details.json"
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-root_data_folder = "/mnt/data/shujuji/data"
-if (root_data_folder == ""):
-    print("please set root data folder </config/data_config.py> before proceeding.")
-    exit()
+root_data_folder = os.environ.get(
+    "DGSP_DATA_DIR",
+    os.path.join(PROJECT_ROOT, "data")
+)
 
 
 ## resist feature file
